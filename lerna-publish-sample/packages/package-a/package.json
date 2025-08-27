@@ -1,0 +1,31 @@
+{
+  "name": "@kaseken/package-a",
+  "version": "0.0.1",
+  "description": "Package A - Sample utility functions",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "prepublishOnly": "yarn build",
+    "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaseken/github-actions-samples.git",
+    "directory": "lerna-publish-sample/packages/package-a"
+  },
+  "keywords": [
+    "lerna",
+    "sample",
+    "utility"
+  ],
+  "author": "kaseken",
+  "license": "MIT",
+  "files": [
+    "dist/**/*"
+  ]
+}
