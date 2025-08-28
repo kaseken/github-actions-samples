@@ -34,3 +34,8 @@ jobs:
         run: yarn lerna publish from-package --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Create version tags
+        run: |
+          git fetch --tags
+          yarn lerna exec --no-bail -- ./scripts/create-package-tag.sh
+          git push --tags
