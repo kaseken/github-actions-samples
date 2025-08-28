@@ -23,6 +23,7 @@
   ],
   "devDependencies": {
     "@lerna-lite/cli": "^4.7.2",
+    "@lerna-lite/exec": "^4.7.2",
     "@lerna-lite/publish": "^4.7.2",
     "@lerna-lite/run": "^4.7.2",
     "@types/jest": "^30.0.0",

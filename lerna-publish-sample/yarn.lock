@@ -753,6 +753,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@kaseken/package-a@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@kaseken/package-a/-/package-a-0.0.1.tgz#a182b9216d407a5563bca865cb19d64b9949a35a"
+  integrity sha512-AX6nDwjBebgP6yUd9/CzoUcf1INBzOrujgj++NTbPykNWZM7waxHyzDgccyB5271QUKbF4YVEhPj7rj8zkX/uQ==
+
 "@lerna-lite/cli@4.7.2", "@lerna-lite/cli@^4.7.2":
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/@lerna-lite/cli/-/cli-4.7.2.tgz#8d48f6bd91461d059a223b9486a45da97ab9dbd2"
@@ -800,6 +805,18 @@
     write-package "^7.1.0"
     yaml "^2.8.1"
     zeptomatch "^2.0.2"
+
+"@lerna-lite/exec@^4.7.2":
+  version "4.7.2"
+  resolved "https://registry.yarnpkg.com/@lerna-lite/exec/-/exec-4.7.2.tgz#9425029023dc7a82350b869b8ff6e5e00e3da3aa"
+  integrity sha512-H/aJ5Jrsuy8cuvNHCKwgpgZ8FIM2fakoawh2ZU5ikctI5aLpRPqxaUQZNe8iLU8lodhHjKrOoU5SFikTGCcaNA==
+  dependencies:
+    "@lerna-lite/cli" "4.7.2"
+    "@lerna-lite/core" "4.7.2"
+    "@lerna-lite/profiler" "4.7.2"
+    dotenv "^17.2.1"
+    p-map "^7.0.3"
+    tinyrainbow "^2.0.0"
 
 "@lerna-lite/init@4.7.2":
   version "4.7.2"
