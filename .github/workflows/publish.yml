@@ -37,5 +37,5 @@ jobs:
       - name: Create version tags
         run: |
           git fetch --tags
-          yarn lerna exec ../../scripts/create-package-tag.sh
+          yarn lerna exec \$LERNA_ROOT_PATH/scripts/create-package-tag.sh
           git push --tags
