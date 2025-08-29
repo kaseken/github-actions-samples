@@ -10,22 +10,14 @@ jobs:
         working-directory: lerna-publish-sample
     permissions:
       contents: write # Required for tagging.
-      id-token: write # Required for authentication using OIDC.
     steps:
       - name: Checkout code
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - name: Setup Node.js
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          # npm v11.5.2 requires node v20.17.0 and above.
           node-version: 20
-          # Sets up auth token in .npmrc.
           registry-url: 'https://registry.npmjs.org'
-      # NOTE: Ensure npm 11.5.1 or later is installed
-      # since trusted publishing requires npm CLI version 11.5.1 or later.
-      # https://docs.npmjs.com/trusted-publishers
-      - name: Update npm
-        run: npm install -g npm@11.5.2
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build packages
@@ -38,13 +30,12 @@ jobs:
         run: |
           git config --global user.email "git@users.noreply.github.com"
           git config --global user.name "github actions"
-      # NOTE: Lerna ALWAYS uses npm to publish packages.
-      # https://lerna.js.org/docs/features/version-and-publish
-      - name: Publish package-a
-        working-directory: lerna-publish-sample/packages/package-a
+      - name: Publish packages
+        run: yarn lerna publish from-package --yes
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Create version tags
         run: |
-          npm publish
-      - name: Publish package-b
-        working-directory: lerna-publish-sample/packages/package-b
-        run: |
-          npm publish
+          git fetch --tags
+          yarn lerna exec \$LERNA_ROOT_PATH/scripts/create-package-tag.sh
+          git push --tags

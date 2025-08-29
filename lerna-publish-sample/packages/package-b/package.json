@@ -1,6 +1,6 @@
 {
   "name": "@kaseken/package-b",
-  "version": "0.0.1",
+  "version": "0.0.7",
   "description": "Package B - Math utility functions",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
