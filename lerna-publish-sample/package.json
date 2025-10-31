@@ -22,10 +22,10 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@lerna-lite/cli": "^4.7.2",
-    "@lerna-lite/exec": "^4.7.2",
-    "@lerna-lite/publish": "^4.7.2",
-    "@lerna-lite/run": "^4.7.2",
+    "@lerna-lite/cli": "^4.9.1",
+    "@lerna-lite/exec": "^4.9.1",
+    "@lerna-lite/publish": "^4.9.1",
+    "@lerna-lite/run": "^4.9.1",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.3.0",
     "@typescript-eslint/eslint-plugin": "^8.41.0",
