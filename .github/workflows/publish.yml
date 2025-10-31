@@ -9,6 +9,7 @@ jobs:
       run:
         working-directory: lerna-publish-sample
     permissions:
+      id-token: write # Required for OIDC
       contents: write # Required for tagging.
     steps:
       - name: Checkout code
