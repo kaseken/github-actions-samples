@@ -1,6 +1,6 @@
 {
   "name": "@kaseken/package-a",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Package A - Sample utility functions",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
