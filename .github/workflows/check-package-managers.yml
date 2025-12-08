@@ -1,0 +1,27 @@
+name: Check Package Management Tools on macOS 26
+on:
+  workflow_dispatch:
+jobs:
+  check-package-managers:
+    runs-on: macos-26
+    steps:
+      - name: Check Bundler version
+        run: bundler --version
+      - name: Check Carthage version
+        run: carthage version
+      - name: Check CocoaPods version
+        run: pod --version
+      - name: Check Homebrew version
+        run: brew --version
+      - name: Check NPM version
+        run: npm --version
+      - name: Check Pip3 version
+        run: pip3 --version
+      - name: Check Pipx version
+        run: pipx --version
+      - name: Check RubyGems version
+        run: gem --version
+      - name: Check Vcpkg version
+        run: vcpkg version
+      - name: Check Yarn version
+        run: yarn --version
