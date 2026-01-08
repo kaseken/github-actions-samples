@@ -23,15 +23,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
-          token: ${{ steps.generate-token.outputs.token }}
           fetch-depth: 0
       - name: Configure Git
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
+          git config --global url."https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/".insteadOf "https://github.com/"
       - name: Merge to target branch
-        env:
-          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
           echo "Merging ${CURRENT_BRANCH} into ${TARGET_BRANCH}"
           git fetch origin ${TARGET_BRANCH}
