@@ -1,0 +1,30 @@
+name: Test Token Priority
+on:
+  workflow_dispatch:
+    inputs:
+      persist-credentials:
+        description: 'persist-credentials for checkout action'
+        required: true
+        type: boolean
+        default: true
+jobs:
+  test:
+    name: Test token priority
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate GitHub App Token
+        id: app-token
+        uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        with:
+          app-id: ${{ secrets.SAMPLE_GITHUB_APP_ID }}
+          private-key: ${{ secrets.SAMPLE_GITHUB_APP_CLIENT_SECRET }}
+      - name: Checkout
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: ${{ inputs.persist-credentials }}
+      - name: Set x-access-token
+        run: |
+          git config --global url."https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/".insteadOf "https://github.com/"
+      - name: Test clone GitHub App accessible repo
+        run: |
+          git clone https://github.com/${{ secrets.PRIVATE_REPO }}.git test-repo && echo "✅ SUCCESS: GitHub App token is used" || echo "❌ FAILED: GITHUB_TOKEN is used"
