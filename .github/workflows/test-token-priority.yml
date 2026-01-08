@@ -18,7 +18,8 @@ jobs:
         with:
           app-id: ${{ secrets.SAMPLE_GITHUB_APP_ID }}
           private-key: ${{ secrets.SAMPLE_GITHUB_APP_CLIENT_SECRET }}
-          repositories: ${{ secrets.PRIVATE_REPO }}
+          owner: ${{ secrets.PRIVATE_REPO_OWNER }}
+          repositories: ${{ secrets.PRIVATE_REPO_NAME }}
       - name: Checkout
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
@@ -27,4 +28,4 @@ jobs:
         run: |
           git config --global url."https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/".insteadOf "https://github.com/"
       - name: Test clone GitHub App accessible repo
-        run: git clone https://github.com/${{ secrets.PRIVATE_REPO }}.git test-repo
+        run: git clone https://github.com/${{ secrets.PRIVATE_REPO_OWNER }}/${{ secrets.PRIVATE_REPO_NAME }}.git test-repo
