@@ -5,6 +5,7 @@ on:
       - main
 jobs:
   sync:
+    if: github.repository == 'kaseken/github-actions-samples'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source repository
